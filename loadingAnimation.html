@@ -10,10 +10,17 @@
   <div id="status">Please wait</div>
 
   <script>
-    function runLoadingAnimation() {
+// The script portion of this HTML page creates a function runLoadingAnimation that looks to the IDs in
+// the <div> elements above, establishing a loader visualization and status text
+function runLoadingAnimation() {
+// The constant "loader" variable is established and references the style defined by a corresponding <div><
+// div> element above.
       const loader = document.getElementById("loader");
+// The constant "status" variable is established and references the style defined by a corresponding <div></div>
+// div> element above.
       const status = document.getElementById("status");
-
+// The constant "frames" variable is established with the array
+// The frames
       const frames = ["⏳", "⌛", ".", "..", "..."];
       let index = 0;
       let cycleCount = 0;
