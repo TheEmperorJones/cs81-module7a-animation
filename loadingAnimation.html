@@ -5,33 +5,50 @@
   <title>Loading Animation Simulator</title>
 </head>
 <body style="font-family: monospace; text-align: center; padding-top: 100px; background-color: #f4f4f4;">
-
-  <div id="loader" style="font-size: 2rem; margin-bottom: 20px;">Loading...</div>
+<!-- ** Suggestion ** At ths risk of being annoying, a very low-volume ticking or chime sound could run, if this were a game versus a commercial website, adding a bit of charge to the visual elements.-->
+<!-- ** Modification: added a thick border and changed the font size to showcase the beautiful detail of the hourglass emoji.--> 
+  <div id="loader" style="font-size: 8rem; border: 8px solid black; margin-bottom: 20px;">Loading...</div>
   <div id="status">Please wait</div>
 
   <script>
-// The script portion of this HTML page creates a function runLoadingAnimation that looks to the IDs in
-// the <div> elements above, establishing a loader visualization and status text
+// The script portion of this HTML page creates a function runLoadingAnimation
+// that looks to the IDs in the <div> elements above, establishing a loader
+// visualization and status text
 function runLoadingAnimation() {
-// The constant "loader" variable is established and references the style defined by a corresponding <div><
+// The constant "loader" variable is established and references the 
+// style defined by a corresponding <div><
 // div> element above.
       const loader = document.getElementById("loader");
-// The constant "status" variable is established and references the style defined by a corresponding <div></div>
+// The constant "status" variable is established and references the style
+// defined by a corresponding <div></div>
 // div> element above.
       const status = document.getElementById("status");
-// The constant "frames" variable is established with the array
-// The frames
+// The constant "frames" variable is established with an array;
+// The frames are represented by two hourglass emojies implying state change,
+// followed by expanding periods.
       const frames = ["⏳", "⌛", ".", "..", "..."];
+// This index variable starts at 0, and will track the position of which frames
+// array element is being read.
       let index = 0;
+// This cycleCount variable is initialized at zero here.
       let cycleCount = 0;
+// This maxCycles variable sets the limit at 10.
       const maxCycles = 10;
 
+// This interval object establishes the setInterval at 500 miliseconds,
+// or half a second. It also creates two if conditions that work together to
+// trigger a maxCycles cycle count of 10, at which point the loop ends, and
+// loader shows green checkmark while status shows "Done!" string.
       const interval = setInterval(() => {
         loader.textContent = frames[index % frames.length];
         index++;
+// This cycleCount only increments when the index of the frames array which itself
+// increments from length, divides by the static length itself and leaves no remainder.
         if (index % frames.length === 0) {
           cycleCount++;
         }
+/* Once maxCycles constant is reached at 10, the interval is cleared because its
+condition is met, and the final animation is shown. */
         if (cycleCount >= maxCycles) {
           clearInterval(interval);
           loader.textContent = "✅";
@@ -39,7 +56,8 @@ function runLoadingAnimation() {
         }
       }, 500);
     }
-
+// The loading animation updates at this point in the script, but references the
+// setInterval index>cycleCount/MaxCount logic to reach its conclusion.
     runLoadingAnimation();
   </script>
 
